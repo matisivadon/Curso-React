@@ -1,13 +1,25 @@
-// import logo from './logo.svg';
-// import './App.css';
-// import NavBar from './components/NavBar';
+import NavBar from './components/NavBar'
 import ItemListContainer from './components/ItemListContainer'
-
+import ItemDetailContainer from './components/ItemDetailContainer';
+import {Routes, Route} from 'react-router-dom';
+import './styles/Item.css'
 
 
 function App() {
+
   return (
-    <ItemListContainer greeting='Saludo de prueba'/>
+    <>
+        <NavBar/>
+        <main>
+          <Routes>
+            <Route exact path='/' element ={<ItemListContainer/>} />
+            <Route exact path='/category/:typeId' element ={<ItemListContainer/>} />
+            <Route exact path='/item/:itemId' element ={<ItemDetailContainer/>} />
+            <Route exact path='/category/:typeId/item/:itemId' element ={<ItemDetailContainer/>} />
+          </Routes>
+        </main>    
+    </>
+
   )
 }
 

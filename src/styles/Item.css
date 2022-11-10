@@ -1,0 +1,41 @@
+main {
+    margin-left: 3rem;
+  }
+
+.title{
+    display:flex;
+    justify-content: center;
+    font-size: 2rem;
+}  
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.card {
+    width: 25rem;
+}
+
+.card-img {
+    width: 100%;
+}
+
+.card-img:hover {
+    cursor: pointer;
+}
+
+.card-title{
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-p {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+}
