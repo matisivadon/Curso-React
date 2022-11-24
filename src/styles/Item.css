@@ -39,3 +39,10 @@ main {
     justify-content: center;
     font-size: 1.5rem;
 }
+
+.card-category {
+    display: flex;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+}

@@ -3,18 +3,18 @@ import {Link} from 'react-router-dom';
 import '../styles/Item.css';
 
 
-const Item = ({info}) => {
+const Item = ({product}) => {
 
+    const {id,category, image, name, price} = product || {}
     return (
          <article className='card'>
-            <Link to ={`item/${info.id}`}>
-                <img className='card-img' src={info.imagen} alt={info.nombre}/>
+            <Link to ={`item/${id}`}>
+                <img className='card-img' src={image} alt={name}/>
             </Link>
-                <h2 className='card-title'>{info.nombre}</h2>
-                <p className='card-p'>${info.precio}</p>
+                <h2 className='card-title'>{name}</h2>
+                <h3 className='card-p'>${price}</h3>
+                <p className='card-category'>{category}</p>
         </article>
-
-
     )
 }
 
