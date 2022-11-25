@@ -18,7 +18,13 @@
     justify-content: center;
 }
 
-.card-descript {
+.card-descript{
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+}
+
+.card-stock{
     font-size: 1.7rem;
     display: flex;
     justify-content: center;

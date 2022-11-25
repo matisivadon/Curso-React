@@ -1,20 +1,46 @@
-import React from 'react';
-import '../styles/NavBar.css';
+import React, {useState, useEffect} from 'react';
+import {useParams} from 'react-router-dom';
+import {getFirestore, collection, getDocs, query, where} from 'firebase/firestore';
 import CartWidget from './CartWidget';
 import {NavLink} from 'react-router-dom';
+import '../styles/NavBar.css';
 
-const NavBar = ({name, id, onFilter}) => {
+
+const NavBar = () => {
+
+    const [goToMtb, setGoToMtb] = useState(null)
+    const [goToRuta, setGoToRuta] = useState(null)
+    const {category} = useParams()
+
+    useEffect(()=> {
+        const db = getFirestore()
+        const queryMtb = query(collection(db, 'products'), where('category', '==', 'Mountain Bike'))
+        const queryRuta = query(collection(db, 'products'), where('category', '==', 'Ruta'))
+
+            Promise.all ([
+                getDocs(queryMtb).then((snapshot) => {
+                setGoToMtb(snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()})))
+                }),
+            
+                getDocs(queryRuta).then((snapshot) => {
+                setGoToRuta((snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))))
+                }) 
+            ])
+
+    },[category])
+
+
     return ( 
             <nav className='navbar-container'>
                 <ul className='navbar'>
                     <li className='navbar-items'>
                         <NavLink to='/'>HOME</NavLink>
                     </li>
-                        <li className='navbar-items' id={id} onClick ={onFilter}>
-                            <NavLink to='category/mtb'>MONTAÑA</NavLink>
+                        <li className='navbar-items' route={category}>
+                            <NavLink to={`category/${goToMtb}`}>MONTAÑA</NavLink>
                         </li>
-                        <li className='navbar-items'  id={id} onClick ={onFilter}>
-                            <NavLink to='category/ruta'>RUTA</NavLink>
+                        <li className='navbar-items'>
+                            <NavLink to={`category/${goToRuta}`}>RUTA</NavLink>
                         </li>
                         <li className='navbar-items-cart'>
                             <NavLink to='/cart'> <CartWidget/> </NavLink>

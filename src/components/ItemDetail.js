@@ -3,7 +3,7 @@ import ItemCount from './ItemCount';
 import '../styles/ItemDetail.css';
 
 const ItemDetail = ({product}) => {
-    const {id,category, image, name, price, description, stock} = product || {}
+    const {category, image, name, price, description, stock} = product || {}
 
     const onAdd = (quantity) => {
         console.log(`Seleccionaste la cantidad de ${quantity} bicicletas`)
