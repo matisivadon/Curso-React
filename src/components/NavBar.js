@@ -14,19 +14,19 @@ const NavBar = () => {
 
     useEffect(()=> {
         const db = getFirestore()
-        const queryMtb = query(collection(db, 'products'), where('category', '==', 'Mountain Bike'))
-        const queryRuta = query(collection(db, 'products'), where('category', '==', 'Ruta'))
+        const queryMtb = query(collection(db, 'categories'), where('category', '==', 'Mountain Bike'))
+        const queryRuta = query(collection(db, 'categories'), where('category', '==', 'Ruta'))
 
             Promise.all ([
                 getDocs(queryMtb).then((snapshot) => {
-                setGoToMtb(snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()})))
+                    setGoToMtb(snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))) 
                 }),
-            
+                
                 getDocs(queryRuta).then((snapshot) => {
-                setGoToRuta((snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))))
+                    setGoToRuta((snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))))
                 }) 
             ])
-
+            console.log(goToMtb,goToRuta)
     },[category])
 
 
@@ -36,7 +36,7 @@ const NavBar = () => {
                     <li className='navbar-items'>
                         <NavLink to='/'>HOME</NavLink>
                     </li>
-                        <li className='navbar-items' route={category}>
+                        <li className='navbar-items'>
                             <NavLink to={`category/${goToMtb}`}>MONTAÑA</NavLink>
                         </li>
                         <li className='navbar-items'>
