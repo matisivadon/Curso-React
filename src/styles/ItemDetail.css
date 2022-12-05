@@ -56,3 +56,22 @@
 .count {
     font-size: 1.5rem;
 }
+
+.card-buy {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 0.2rem black solid;
+    background-color:#C86304;
+    width: 10rem;
+    height: 1rem;
+    padding: 3rem;
+    border-radius: 2rem;
+    margin: 10rem 0 0 10rem;
+    transition: all 1s;
+}
+
+.card-buy:hover {
+    background-color: #ac430a;
+}

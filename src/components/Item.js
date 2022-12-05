@@ -4,7 +4,6 @@ import '../styles/Item.css';
 
 
 const Item = ({product}) => {
-
     const {id,category, image, name, price} = product || {}
     return (
          <article className='card'>
@@ -12,7 +11,7 @@ const Item = ({product}) => {
                 <img className='card-img' src={image} alt={name}/>
             </Link>
                 <h2 className='card-title'>{name}</h2>
-                <h3 className='card-p'>${price}</h3>
+                <h3 className='card-p'>U$D {price}</h3>
                 <p className='card-category'>{category}</p>
         </article>
     )
